@@ -28,23 +28,6 @@ app.get("/", (req, res) => {
   res.send("This is your Home Page");
 });
 
-// app.get("/testlisting", async (req, res) => {
-//   let samplelisting = new Listing({
-//     title: "Krishna Resort",
-//     description: "This is a party and chilling place",
-//     image: {
-//       filename: "samplelisting",
-//       url: "",
-//     },
-//     price: 1000,
-//     location: "Rura",
-//     country: "India",
-//   });
-//   await samplelisting.save();
-//   console.log("Sample is saved");
-//   res.send("your listing is added");
-// });
-
 app.get("/listings", async (req, res) => {
   const allListings = await Listing.find({});
   res.render("listings/index", { allListings });
