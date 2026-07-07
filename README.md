@@ -31,12 +31,14 @@ Building this has been a massive learning curve—going from basic HTML/CSS to w
 
 Here is a quick look at how I've organized the code under the hood:
 
+```text
 MAJOR PROJECT/
-├── init/ # Dummy data and DB initialization script
-├── models/ # Mongoose schemas (listing.js)
-├── public/ # Static assets (custom CSS, client-side JS scripts)
-├── utils/ # Utility functions (wrapAsync.js, ExpressError.js)
-├── views/ # EJS templates (listings CRUD, boilerplate layouts, error pages)
-├── app.js # The main server file and entry point
-├── schema.js # Server-side validation schemas (Joi)
-└── package.json # Node dependencies
+├── init/             # Dummy data and DB initialization script
+├── models/           # Mongoose schemas (listing.js)
+├── public/           # Static assets (custom CSS, client-side JS scripts)
+├── utils/            # Utility functions (wrapAsync.js, ExpressError.js)
+├── views/            # EJS templates (listings CRUD, boilerplate layouts, error pages)
+├── app.js            # The main server file and entry point
+├── schema.js         # Server-side validation schemas (Joi)
+└── package.json      # Node dependencies
+```
