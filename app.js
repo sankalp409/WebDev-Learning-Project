@@ -4,12 +4,17 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
-const listings = require("./routes/listings.js");
-const reviews = require("./routes/review.js");
 const app = express();
 const mongo_url = "mongodb://127.0.0.1:27017/wanderlust";
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const localStrategy = require("passport-local");
+
+const listingRouter = require("./routes/listings.js");
+const reviewRouter = require("./routes/review.js");
+const User = require("./models/user.js");
+const userRouter = require("./routes/user.js");
 
 main().catch((err) => console.log(err));
 async function main() {
@@ -36,6 +41,12 @@ const sessionOptions = {
 
 app.use(session(sessionOptions));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.listen(3000, () => {
   console.log("Your Server is Online");
@@ -48,12 +59,21 @@ app.get("/", (req, res) => {
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
-
   next();
 });
 
-app.use("/listings", listings);
-app.use("/listings/:id", reviews);
+// app.get("/demouser", async (req, res) => {
+//   let fakeUser = new User({
+//     email: "student2@gmial.com",
+//     username: "sanku-baba",
+//   });
+//   let registeredUser = await User.register(fakeUser, "helloworld");
+//   res.send(registeredUser);
+// });
+
+app.use("/listings", listingRouter);
+app.use("/listings/:id", reviewRouter);
+app.use("/", userRouter);
 
 // Catch-all for 404 Not Found - must be before the final error handler
 app.use((req, res, next) => {
