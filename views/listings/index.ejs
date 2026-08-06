@@ -1,7 +1,65 @@
  <% layout("/layouts/boilerplate") -%>
+ <style>
+   #filters {
+     display: flex;
+     flex-wrap: wrap;
+   }
 
- <h3>ALL LISTINGS</h3>
+   .filter {
+     text-align: center;
+     margin-right: 2rem;
+     opacity: 0.7;
+   }
 
+   .filter:hover {
+     opacity: 1;
+     cursor: pointer;
+   }
+ </style>
+
+
+ <div id="filters">
+   <div class="filter">
+     <div><i class="fa-solid fa-arrow-trend-up"></i></div>
+     <p>Trending</p>
+   </div>
+   <div class="filter">
+     <div><i class="fa-solid fa-bed"></i></div>
+     <p>Rooms</p>
+   </div>
+   <div class="filter">
+     <div><i class="fa-solid fa-rupee-sign"></i></div>
+     <p>Price</p>
+   </div>
+   <div class="filter">
+     <div><i class="fa-solid fa-wifi"></i></div>
+     <p>Wifi</p>
+   </div>
+   <div class="filter">
+     <div><i class="fa-solid fa-bath"></i></div>
+     <p>Bathroom</p>
+   </div>
+   <div class="filter">
+     <div><i class="fa-solid fa-dumbbell"></i></div>
+     <p>Gym</p>
+   </div>
+   <div class="filter">
+     <div><i class="fa-solid fa-spa"></i></div>
+     <p>Spa</p>
+   </div>
+   <div class="filter">
+     <div><i class="fa-solid fa-person-swimming"></i></div>
+     <p>Pool</p>
+   </div>
+   <div class="filter">
+     <div><i class="fa-solid fa-city"></i></div>
+     <p>Golden Cities</p>
+   </div>
+   <div class="filter">
+     <div><i class="fa-solid fa-umbrella-beach"></i></div>
+     <p>Beach</p>
+   </div>
+ </div>
 
  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
    <%for(let listing of allListings){%>

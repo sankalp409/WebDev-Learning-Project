@@ -2,7 +2,7 @@
 <div class="col-8 offset-2">
   <h3><b>Edit your Listing</b>
   </h3>
-  <form method="post" action="/listings/<%=listing._id%>?_method=PUT" novalidate class="needs-validation">
+  <form method="post" action="/listings/<%=listing._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
 
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
@@ -26,16 +26,15 @@
       </div>
     </div>
 
+    <div class="mb-3">
+      Original Listing Image <br>
+      <img src="<%=originalImageUrl%>">
+    </div>
     <div class="row">
       <div class="mb-3 col-md-5">
-        <label for="image" class="form-label">Image URL</label>
-        <input required type="text" value="<%=listing.image.url%>" placeholder="Enter image URL" name="listing[image][url]" class="form-control" />
-        <div class="valid-feedback">
-          OK
-        </div>
-        <div class="invalid-feedback">
-          Fill the field
-        </div>
+        <label for="image" class="form-label">Upload New Image</label>
+        <input required type="file" placeholder="Enter image URL" name="listing[image]" class="form-control" />
+
       </div>
 
       <div class="mb-3 col-md-7">
@@ -62,7 +61,7 @@
 
     <div class="mb-3">
       <label for="country" class="form-label">Country</label>
-      <input required type="text" value="<%=listing.country%>" placeholder="eg.India etc" name="listing[history]" class="form-control" />
+      <input required type="text" value="<%=listing.country%>" placeholder="eg.India etc" name="listing[country]" class="form-control" />
       <div class="valid-feedback">
         OK
       </div>

@@ -4,13 +4,13 @@
   <div class="col-8 offset-2">
     <h3><b>Create New Listing</b>
     </h3>
-    <form method="post" action="/listings" novalidate class="needs-validation">
+    <form method="post" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
 
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input type="text" placeholder="eg. Burj Khalifa" name="listing[title]" class="form-control" required />
         <div class="valid-feedback">
-          OK
+          Looks good!
         </div>
         <div class="invalid-feedback">
           Fill the field
@@ -21,25 +21,28 @@
         <label for="description" class="form-label">Enter your description</label>
         <textarea type="text" placeholder="eg.This is the one of the tallest building in the world" name="listing[description]" class="form-control" required></textarea>
         <div class="valid-feedback">
-          OK
+          Looks good!
         </div>
         <div class="invalid-feedback">
           Fill the field
         </div>
       </div>
 
+
       <div class="row">
         <div class="mb-3 col-md-5">
           <label for="image" class="form-label">Upload your image</label>
-          <input type="text" placeholder="eg.web url " name="listing[image][url]" class="form-control" />
-
+          <input type="file" placeholder="image.jpeg/jpg/png/pdf" name="listing[image]" class="form-control" />
+          <div class="valid-feedback">
+            Looks good!
+          </div>
         </div>
 
         <div class="mb-3 col-md-7">
           <label for="loaction" class="form-label">Location</label>
           <input type="text" placeholder="eg.Jaipur " name="listing[location]" class="form-control" required />
           <div class="valid-feedback">
-            OK
+            Looks good!
           </div>
           <div class="invalid-feedback">
             Fill the field
@@ -50,7 +53,7 @@
         <label for="price" class="form-label">Price</label>
         <input type="text" placeholder="eg.1,200" name="listing[price]" class="form-control" required />
         <div class="valid-feedback">
-          OK
+          Looks good!
         </div>
         <div class="invalid-feedback">
           Fill the field
@@ -61,7 +64,7 @@
         <label for="country" class="form-label">Country</label>
         <input type="text" placeholder="eg.India etc" name="listing[country]" class="form-control" required />
         <div class="valid-feedback">
-          OK
+          Looks good!
         </div>
         <div class="invalid-feedback">
           Fill the field
