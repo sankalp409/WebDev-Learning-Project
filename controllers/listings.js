@@ -1,8 +1,29 @@
 const Listing = require("../models/listing");
 
+function buildListingSearchQuery(keyword) {
+  const searchKeyword = keyword?.trim();
+
+  if (!searchKeyword) {
+    return {};
+  }
+
+  return {
+    $or: [
+      { title: { $regex: searchKeyword, $options: "i" } },
+      { description: { $regex: searchKeyword, $options: "i" } },
+      { location: { $regex: searchKeyword, $options: "i" } },
+      { country: { $regex: searchKeyword, $options: "i" } },
+    ],
+  };
+}
+
+module.exports.buildListingSearchQuery = buildListingSearchQuery;
+
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index", { allListings });
+  const keyword = req.query.search;
+  const searchQuery = buildListingSearchQuery(keyword);
+  const allListings = await Listing.find(searchQuery);
+  res.render("listings/index", { allListings, keyword });
 };
 
 module.exports.renderNewForm = (req, res) => {

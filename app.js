@@ -95,6 +95,10 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id", reviewRouter);
 app.use("/", userRouter);
 
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 // Catch-all for 404 Not Found - must be before the final error handler
 app.use((req, res, next) => {
   next(new ExpressError(404, "Page not found"));
