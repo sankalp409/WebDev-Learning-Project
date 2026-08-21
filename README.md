@@ -1,5 +1,7 @@
 # 🌍 Wanderlust - Travel Listing Platform
 
+LIVE - https://webdev-learning-project.onrender.com/listings
+
 Welcome to **Wanderlust**, a full-stack travel listing platform inspired by Airbnb. This project was built as a major project to gain practical experience in **Node.js, Express.js, MongoDB, authentication, RESTful routing, MVC architecture, and deployment**.
 
 Users can explore travel listings, view detailed information, search and filter listings, leave reviews, and interact with the platform through a complete CRUD-based system.
